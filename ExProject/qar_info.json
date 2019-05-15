@@ -1,0 +1,7 @@
+{
+	"common_dir" : "C:/projects/dspc/dspc_work_de1soc/qsys_basic_nios2_for_ex/",
+	"acds_version" : "Version 17.1.0",
+	"platform" : "windows",
+	"os" : "Windows 10",
+	"qpf" : "qsys_basic.qpf"
+}

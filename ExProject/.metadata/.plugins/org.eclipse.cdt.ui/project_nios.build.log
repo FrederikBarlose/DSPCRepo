@@ -1,0 +1,18 @@
+09:48:48 **** Incremental Build of configuration Nios II for project project_nios ****
+make all 
+Info: Building ../project_nios_bsp/
+C:/intelFPGA/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../project_nios_bsp/
+[BSP build complete]
+Info: Compiling hello_world_small.c to obj/default/hello_world_small.o
+nios2-elf-gcc -xc -MP -MMD -c -I../project_nios_bsp//HAL/inc -I../project_nios_bsp/ -I../project_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world_small.o hello_world_small.c
+Info: Linking project_nios.elf
+nios2-elf-g++  -T'../project_nios_bsp//linker.x' -msys-crt0='../project_nios_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../project_nios_bsp/  -msmallc  -Wl,-Map=project_nios.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o project_nios.elf obj/default/hello_world_small.o -lm -msys-lib=m
+nios2-elf-insert project_nios.elf --thread_model hal --cpu_name cpu_0 --qsys true --simulation_enabled false --id 123456 --sidp 0x4011060 --timestamp 1557305356 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name CPU_System --quartus_project_dir "C:/Users/fenta/Desktop/DSPC/ExProject" --jdi ../..//output_files/qsys_basic.jdi --sopcinfo C:/Users/fenta/Desktop/DSPC/ExProject/software/project_nios_bsp/../../CPU_System.sopcinfo
+Info: (project_nios.elf) 3316 Bytes program size (code + initialized data).
+Info:                    65535 KBytes free for stack + heap.
+Info: Creating project_nios.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source project_nios.elf >project_nios.objdump
+[project_nios build complete]
+
+09:48:52 Build Finished (took 3s.577ms)
+
