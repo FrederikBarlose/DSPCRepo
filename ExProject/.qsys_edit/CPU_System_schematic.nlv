@@ -8,6 +8,7 @@ preplace inst CPU_System.pio_output_0 -pg 1 -lvl 2 -y 690
 preplace inst CPU_System.pio_input_0 -pg 1 -lvl 2 -y 590
 preplace inst CPU_System.jtag_uart_0 -pg 1 -lvl 2 -y 30
 preplace inst CPU_System.fpga_sdram -pg 1 -lvl 2 -y 490
+preplace inst CPU_System.bridge_component_0 -pg 1 -lvl 3 -y 890
 preplace inst CPU_System.cpu_0 -pg 1 -lvl 1 -y 100
 preplace inst CPU_System.timer_timestamp -pg 1 -lvl 2 -y 230
 preplace inst CPU_System.onchip_memory2_1 -pg 1 -lvl 2 -y 330
@@ -15,16 +16,16 @@ preplace inst CPU_System.cpu_0.reset_bridge -pg 1
 preplace inst CPU_System.cpu_0.cpu -pg 1
 preplace inst CPU_System.cpu_0.clock_bridge -pg 1
 preplace inst CPU_System -pg 1 -lvl 1 -y 40 -regy -20
-preplace netloc EXPORT<net_container>CPU_System</net_container>(MASTER)pll.outclk1,(MASTER)CPU_System.dram_clk) 1 2 1 N
-preplace netloc EXPORT<net_container>CPU_System</net_container>(SLAVE)CPU_System.clk_50_clk_in,(SLAVE)clk_50.clk_in) 1 0 1 NJ
-preplace netloc INTERCONNECT<net_container>CPU_System</net_container>(SLAVE)timer_timestamp.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)fpga_sdram.s1,(MASTER)cpu_0.instruction_master,(SLAVE)sysid.control_slave,(MASTER)cpu_0.data_master,(SLAVE)timer_system.s1,(SLAVE)pio_input_0.s1,(SLAVE)onchip_memory2_1.s1,(SLAVE)pio_output_0.s1,(SLAVE)cpu_0.debug_mem_slave) 1 0 2 230 40 610
-preplace netloc INTERCONNECT<net_container>CPU_System</net_container>(SLAVE)onchip_memory2_1.reset1,(SLAVE)timer_system.reset,(SLAVE)jtag_uart_0.reset,(MASTER)clk_50.clk_reset,(MASTER)cpu_0.debug_reset_request,(SLAVE)pio_input_0.reset,(SLAVE)cpu_0.reset,(SLAVE)fpga_sdram.reset,(SLAVE)pio_output_0.reset,(SLAVE)pll.reset,(SLAVE)timer_timestamp.reset,(SLAVE)sysid.reset) 1 0 2 250 240 630
+preplace netloc EXPORT<net_container>CPU_System</net_container>(MASTER)pll.outclk1,(MASTER)CPU_System.dram_clk) 1 2 2 NJ 840 NJ
+preplace netloc FAN_OUT<net_container>CPU_System</net_container>(MASTER)cpu_0.irq,(SLAVE)jtag_uart_0.irq,(SLAVE)timer_system.irq,(SLAVE)timer_timestamp.irq) 1 1 1 690
+preplace netloc FAN_OUT<net_container>CPU_System</net_container>(SLAVE)timer_system.clk,(SLAVE)timer_timestamp.clk,(SLAVE)sysid.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)cpu_0.clk,(SLAVE)fpga_sdram.clk,(SLAVE)pio_output_0.clk,(SLAVE)bridge_component_0.clockreset,(MASTER)pll.outclk0,(SLAVE)pio_input_0.clk,(SLAVE)onchip_memory2_1.clk1) 1 0 3 250 240 670 880 910
 preplace netloc EXPORT<net_container>CPU_System</net_container>(SLAVE)fpga_sdram.wire,(SLAVE)CPU_System.dram) 1 0 2 NJ 560 NJ
-preplace netloc EXPORT<net_container>CPU_System</net_container>(SLAVE)CPU_System.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
 preplace netloc EXPORT<net_container>CPU_System</net_container>(SLAVE)CPU_System.pio_input_0_external_connection,(SLAVE)pio_input_0.external_connection) 1 0 2 NJ 620 NJ
 preplace netloc EXPORT<net_container>CPU_System</net_container>(SLAVE)CPU_System.pio_output_0_external_connection,(SLAVE)pio_output_0.external_connection) 1 0 2 NJ 720 NJ
-preplace netloc FAN_OUT<net_container>CPU_System</net_container>(SLAVE)pio_output_0.clk,(SLAVE)cpu_0.clk,(MASTER)pll.outclk0,(SLAVE)fpga_sdram.clk,(SLAVE)timer_system.clk,(SLAVE)pio_input_0.clk,(SLAVE)sysid.clk,(SLAVE)timer_timestamp.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)onchip_memory2_1.clk1) 1 0 3 250 60 650 800 870
-preplace netloc POINT_TO_POINT<net_container>CPU_System</net_container>(MASTER)clk_50.clk,(SLAVE)pll.refclk) 1 1 1 N
-preplace netloc FAN_OUT<net_container>CPU_System</net_container>(SLAVE)timer_system.irq,(MASTER)cpu_0.irq,(SLAVE)jtag_uart_0.irq,(SLAVE)timer_timestamp.irq) 1 1 1 670
-levelinfo -pg 1 0 200 970
-levelinfo -hier CPU_System 210 370 720 890
+preplace netloc EXPORT<net_container>CPU_System</net_container>(SLAVE)clk_50.clk_in_reset,(SLAVE)CPU_System.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>CPU_System</net_container>(SLAVE)clk_50.clk_in,(SLAVE)CPU_System.clk_50_clk_in) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>CPU_System</net_container>(SLAVE)pll.refclk,(MASTER)clk_50.clk) 1 1 1 N
+preplace netloc INTERCONNECT<net_container>CPU_System</net_container>(SLAVE)timer_timestamp.s1,(SLAVE)onchip_memory2_1.s1,(MASTER)cpu_0.data_master,(MASTER)cpu_0.instruction_master,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)bridge_component_0.avalon_slave,(SLAVE)sysid.control_slave,(SLAVE)cpu_0.debug_mem_slave,(SLAVE)pio_output_0.s1,(SLAVE)fpga_sdram.s1,(SLAVE)timer_system.s1,(SLAVE)pio_input_0.s1) 1 0 3 230 280 630 900 N
+preplace netloc INTERCONNECT<net_container>CPU_System</net_container>(SLAVE)pio_output_0.reset,(SLAVE)timer_timestamp.reset,(SLAVE)sysid.reset,(SLAVE)pll.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)pio_input_0.reset,(MASTER)clk_50.clk_reset,(SLAVE)cpu_0.reset,(SLAVE)bridge_component_0.clockreset_reset,(MASTER)cpu_0.debug_reset_request,(SLAVE)onchip_memory2_1.reset1,(SLAVE)fpga_sdram.reset,(SLAVE)timer_system.reset) 1 0 3 270 260 650 920 890
+levelinfo -pg 1 0 200 1160
+levelinfo -hier CPU_System 210 390 740 940 1080

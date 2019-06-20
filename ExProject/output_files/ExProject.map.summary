@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Thu May 16 12:06:11 2019
+Analysis & Synthesis Status : Successful - Thu Jun 20 13:57:00 2019
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : ExProject
-Top-level Entity Name : fir
+Top-level Entity Name : mm_coef
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
 Total registers : 0
-Total pins : 58
+Total pins : 106
 Total virtual pins : 0
 Total block memory bits : 0
 Total DSP Blocks : 0

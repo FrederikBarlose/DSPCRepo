@@ -41,7 +41,7 @@ entity fir is
 	constant coef : coef_array := (5, -21, -19, 19, 78, 107, 78, 19, -19, -21, 5);
 	
 	begin
-	process (reset_n, clk)
+	FILTER: process (reset_n, clk)	
 	
 	variable sum : sum_array;
 	variable product : product_array;

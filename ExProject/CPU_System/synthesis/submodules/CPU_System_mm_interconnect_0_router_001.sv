@@ -198,7 +198,7 @@ module CPU_System_mm_interconnect_0_router_001
     // ( 0x4010800 .. 0x4011000 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 27'h4010800   ) begin
             src_channel = 9'b01;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
 end
